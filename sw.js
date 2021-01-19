@@ -23,10 +23,18 @@ self.addEventListener("install", event => {
 
 // Chrome et d'autres navigateurs refusent l'install d'un PWA si un event listener fetch n'existe pas.
 self.addEventListener("fetch", event => {
+    if (event.request.url === "https://watch-20-01.herokuapp.com/") {
+        // or whatever your app's URL is
         event.respondWith(
             fetch(event.request).catch(err =>
                 self.cache.open(cache_name).then(cache => cache.match("/offline.html"))
             )
         );
-
+    } else {
+        event.respondWith(
+            fetch(event.request).catch(err =>
+                caches.match(event.request).then(response => response)
+            )
+        );
+    }
 });
