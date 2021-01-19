@@ -3,7 +3,7 @@ let cache_name = "Watch";
 const ASSETS = [
     "/offline.html",
     "/index.js",
-    "/index.html",
+    "/home.html",
     "/images/",
     "/assets/",
     "/"
