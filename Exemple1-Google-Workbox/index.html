@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Offline PWA</title>
+		<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="manifest" href="manifest.json" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/manifest/icon-180x180.png"
+    />
+	</head>
+  <body>
+    <p>Je suis accessible</p>
+    <button class="add-button">Add to home screen</button>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then(registration => {
+              console.log('Service Worker registered! 😎');
+            })
+            .catch(err => {
+              console.log('Registration failed 😫 ', err);
+            });
+        });
+      }
+    </script>
+    <script src="index.js"></script>
+  
+  </body>
+</html>
